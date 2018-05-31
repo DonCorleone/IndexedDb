@@ -145,11 +145,11 @@ window.onload = function () {
       // retrieve the name of the task we want to delete. We need
       // to convert it to a number before trying it use it with IDB; IDB key
       // values are type-sensitive.
-      let noteId = Number(e.target.parentNode.getAttribute('data-note-item'));
+      let noteId = Number(e.target.parentNode.getAttribute('data-note-id'));
 
       let transaction = db.transaction(['notes'], 'readwrite');
       let objectStore = transaction.objectStore('notes');
-      let reqeust = objectStore.delete('noteId');
+      let reqeust = objectStore.delete(noteId);
 
       transaction.oncomplete = function(){
          // delete the parent of the button
